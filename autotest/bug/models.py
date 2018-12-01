@@ -1,0 +1,24 @@
+from django.db import models
+from product.models import Product
+
+
+# Create your models here.
+
+class Bug(models.Model):
+    Product = models.ForeignKey('product.Product', on_delete=models.CASCADE, null=True)
+    bugname = models.CharField('BUG名称', max_length=64)
+    bugdetail = models.CharField('详情', max_length=2000)
+    BUG_STATUS = (('激活', '激活'), ('已解决', '已解决'), ('已关闭', '已关闭'))
+    bugstatus = models.CharField(verbose_name='解决状态', choices=BUG_STATUS, default='激活', max_length=200, null=True)
+    BUFG_LEAVEL = (('1', '1'), ('2', '2'), ('3', '3'))
+    buglevel = models.CharField(verbose_name='严重程度', choices=BUFG_LEAVEL, default='3', max_length=200,null=True)
+    bugcreater = models.CharField('创建人', max_length=200)
+    bugassign = models.CharField('分配给', max_length=200)
+    create_time = models.DateTimeField('创建时间', auto_now=True)
+
+    class META:
+        verbose_nmae = 'BUG管理'
+        verbose_nmae_plural = 'BUG管理'
+
+    def __str__(self):
+        return self.bugname

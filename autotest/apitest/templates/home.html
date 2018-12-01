@@ -3,11 +3,14 @@
 
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <head>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <title>自动化测试平台</title>
 </head>
 <body>
 <url>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <li>欢迎您,<a href="#">{{user}}</a></li>
 
         <li><a href="/logout/">退出</a></li>

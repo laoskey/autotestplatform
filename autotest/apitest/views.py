@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from apitest.models import Apitest, Apistep
+from apitest.models import Apitest, Apistep, Apis
 from django.contrib.auth import authenticate,login
 
 
@@ -36,7 +36,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return render(request,'login1.html')
+    return render(request, 'login1.html')
 
 
 #接口管理
@@ -57,3 +57,10 @@ def apistep_manage(request):
         'user':username,
         'apisteps':apistep_list
     })
+
+
+@login_required
+def apis_manage(request):
+    username = request.session.get('user', '')
+    api_list = Apis.objects.all()
+    return render(request, "apis_manage.html", {"user": username, "apiss": api_list})
