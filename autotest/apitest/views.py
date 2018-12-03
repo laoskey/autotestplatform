@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from apitest.models import Apitest, Apistep, Apis
+import pymysql
 from django.contrib.auth import authenticate,login
 
 
@@ -64,3 +65,28 @@ def apis_manage(request):
     username = request.session.get('user', '')
     api_list = Apis.objects.all()
     return render(request, "apis_manage.html", {"user": username, "apiss": api_list})
+
+
+@login_required
+def test_report(request):
+    username = request.session.get('user', '')
+    apis_list = Apis.objects.all()
+    apis_count = Apis.objects.all().count()
+    db = pymysql.connect(
+        user='root',
+        db='autotest',
+        passwd='test123456',
+        host='127.0.0.1',
+        port=3306,
+    )
+    cursor =db.cursor()
+    sql1='SELECT COUNT(ID) FROM APITEST_APIS WHERE APITEST_APIS.APIRESULT=1'
+    aa = cursor.execute(sql1)
+    apis_pass_count = [row[0] for row in cursor.fetchmany(aa)][0]
+    sql2 = 'SELECT COUNT(ID) FROM APITEST_APIS WHERE APITEST_APIS.APIRESULT=0'
+    bb = cursor.execute(sql2)
+    apis_fail_count = [row[0] for row in cursor.fetchmany(bb)][0]
+    db.close()
+    return render(request, 'report.html', {'user': username, 'apiss': apis_list,
+                                           'apiscounts': apis_count, 'apis_pass_counts':apis_pass_count
+                                           , 'apis_fail_counts':apis_fail_count})
