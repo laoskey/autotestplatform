@@ -33,7 +33,7 @@
       <file leaf-file-name="apitest_manage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apitest/templates/apitest_manage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
+            <state relative-caret-position="46">
               <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#td#5;n#tr#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -43,26 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apiauto_testcae3.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apitest/apiauto_testcae3.py">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apitest/templates/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-              <folding>
-                <element signature="e#23#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="apitest_test_method.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apitest/apitest_test_method.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-              <folding>
-                <element signature="e#23#53#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="19" lean-forward="true" selection-start-column="7" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -135,6 +120,8 @@
         <option value="$PROJECT_DIR$/apitest/templates/apitest_manage.html" />
         <option value="$PROJECT_DIR$/apitest/apitest_test_method.py" />
         <option value="$PROJECT_DIR$/apitest/apiauto_testcae3.py" />
+        <option value="$PROJECT_DIR$/apitest/seetings.conf" />
+        <option value="$PROJECT_DIR$/apitest/templates/config.py" />
       </list>
     </option>
   </component>
@@ -170,6 +157,12 @@
               <item name="autotest" type="b2602c69:ProjectViewProjectNode" />
               <item name="autotest" type="462c0819:PsiDirectoryNode" />
               <item name="apitest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autotest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autotest" type="462c0819:PsiDirectoryNode" />
+              <item name="apitest" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="autotest" type="b2602c69:ProjectViewProjectNode" />
@@ -276,12 +269,12 @@
       <workItem from="1543630529273" duration="8315000" />
       <workItem from="1543838306949" duration="5719000" />
       <workItem from="1543923292858" duration="5706000" />
-      <workItem from="1544011614907" duration="6093000" />
+      <workItem from="1544011614907" duration="6912000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81289000" />
+    <option name="totallyTimeSpent" value="82108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -374,23 +367,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/autotest/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding>
-            <element signature="e#632#664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autotest/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="85" column="43" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python37/Lib/site-packages/django/db/backends/base/schema.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -712,9 +688,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apitest/seetings.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apitest/apiauto_testcae3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding>
+            <element signature="e#23#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apitest/templates/apitest_manage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
+        <state relative-caret-position="46">
           <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#a#0;n#td#5;n#tr#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -733,13 +726,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apitest/apiauto_testcae3.py">
+    <entry file="file://$PROJECT_DIR$/apitest/templates/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding>
-            <element signature="e#23#53#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="19" lean-forward="true" selection-start-column="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
