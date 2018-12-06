@@ -90,3 +90,7 @@ def test_report(request):
     return render(request, 'report.html', {'user': username, 'apiss': apis_list,
                                            'apiscounts': apis_count, 'apis_pass_counts': apis_pass_count
                                            , 'apis_fail_counts':apis_fail_count})
+
+
+def left(request):
+    return render(request,"left.html")
