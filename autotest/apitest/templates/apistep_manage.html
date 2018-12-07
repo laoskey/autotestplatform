@@ -11,18 +11,27 @@
 <!--导航栏-->
 <nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
     <div class="container">
-            <a class="navbar-brand" href="#">自动化测试平台</a>
+            <a class="navbar-brand" href="#">&nbsp;</a>
         <ul class="nav justify-content-center">
-           <a class="nav-link" style="color:white;" href="/apitest_manage/">流程接口测试</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="nav-link" style="color: white" href="/apistep_manage/">流程接口测试步骤</a>
         </ul>
+
+        <ul class="nav justify-content-center">
+            <li><a style="color: white" href="/apitest_manage/">流程接口测试用例</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/apistep_manage">流程接口测试步骤</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/apis_manage">单一接口测试用例</a></li>
+        </ul>
+
+
         <ul class="nav justify-content-end">
-            <li class="nav-link"><a style="color: white" href="#">{{ user }}</a></li>
+            <li class="nav-link"><a style="color: white" href="../admin/">{{user}}</a></li>
             <li class="nav-link"><a style="color: white" href="/logout/">退出</a></li>
         </ul>
     </div>
-    </div>
+
 </nav>
 
 
@@ -36,24 +45,21 @@
 
         <tr>
             <th>ID</th>
-            <th>所属产品</th>
-            <th>所属用例</th>
-            <th>步骤</th>
+            <th>接口名称</th>
             <th>地址</th>
             <th>参数=值</th>
             <th>方法</th>
             <th>预期结果</th>
             <th>测试结果</th>
             <th>执行时间</th>
+            <th>业务流程名称</th>
         </tr>
         </thead>
         <tbody>
         {% for apistep in apisteps %}
         <tr>
             <td>{{apistep.id}}</td>
-            <td>{{apistep.Apitest.Product.productname}}</td>
-            <td>case{{apistep.Apitester.id}}:{{apistep.Apitest.apitestnmae}}</td>
-            <td>{{apistep.apistep}}:{{apistep.apiname}}</td>
+            <td>{{apistep.apiname}}</td>
             <td>{{apistep.apiurl}}</td>
             <td>{{apistep.apiparamvalue}}</td>
             <td>{{apistep.apimethod}}</td>
@@ -65,6 +71,7 @@
         {% endif %}
             </td>
             <td>{{apistep.create_time}}</td>
+            <td>{{apistep.apistatus}}</td>
         </tr>
         {% endfor %}
         </tbody>

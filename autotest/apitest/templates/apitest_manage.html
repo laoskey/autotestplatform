@@ -11,43 +11,46 @@
 <!--导航栏-->
 <nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
     <div class="container">
-            <a class="navbar-brand" href="#">自动化测试平台</a>
+            <a class="navbar-brand" href="#">&nbsp;</a>
             <ul class="nav justify-content-center">
-                <li class="nav-link"><a href="#">流程接口测试</a> </li>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <li class="nav-link"><a href="/apistep_manage/">流程接口测试步骤</a> </li>
             </ul>
 
-            <ul class="nav justify-content-end ">
-                <li class="nav-link"><a href="#">{{user}}</a></li>
-                <li class="nav-link"><a href="/logout/">退出</a></li>
+        <ul class="nav justify-content-center">
+            <li><a style="color: white" href="/apitest_manage/">流程接口测试用例</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/apistep_manage">流程接口测试步骤</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/apis_manage">单一接口测试用例</a></li>
+        </ul>
+
+
+        <ul class="nav justify-content-end ">
+                <li class="nav-link"><a style="color: white" href="../admin/">{{user}}</a></li>
+                <li class="nav-link"><a style="color: white" href="/logout/">退出</a></li>
             </ul>
         </div>
 </nav>
 <!-- 流程接口列表-->
-<div class="row" style="padding-top: 70px" >
+<div class="table table-bordered" style="padding-top: 20px" >
     <div class="row" style="padding-left: 50px">
     <div class="col-md-ll">
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>产品</th>
-                <th>流程接口测试案例名称</th>
-                <th>流程接口描述</th>
-                <th>测试负责人</th>
+                <th>业务接口测试名称</th>
+                <th>执行人</th>
                 <th>测试结果</th>
-                <th>测试案例步骤</th>
+                <th>接口列表</th>
             </tr>
             </thead>
 
             {% for apitest in apitests %}
             <tr>
                 <td>{{ apitest.id}}</td>
-                <td>{{ apitest.Product.productname }}</td>
                 <td>{{ apitest.apitestname }}</td>
-                <td>{{ apitest.apitestdesc }}</td>
                 <td>{{ apitest.apitester }}</td>
                 <td>{% if apitest.apitestresult == 1 %}
                 <a style="color: green">{{ apitest.apitestresult }}</a>
@@ -55,7 +58,6 @@
                 <a style="color:red">{{ apitest.apitestresult }}</a>
                     {% endif %}
                 </td>
-                <td>{{ apitest.Apistep.apiteststep }}</td>
             </tr>
             {% endfor %}
         </table>
