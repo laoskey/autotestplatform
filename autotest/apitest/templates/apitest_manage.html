@@ -32,6 +32,20 @@
             </ul>
         </div>
 </nav>
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+    <form class="navbar-form" method="get" action="/apisearch/">
+        {% csrf_token %}
+        <input type="search" name="apitestname" placeholder="请输入id或名称" >
+        <button type="submit">搜索</button>
+    </form>
+</div>
+</div>
+
+
 <!-- 流程接口列表-->
 <div class="table table-bordered" style="padding-top: 20px" >
     <div class="row" style="padding-left: 50px">

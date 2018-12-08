@@ -20,6 +20,7 @@ from bug import bugviews
 from set import setviews
 from apptest import appviews
 from webtest import webviews
+from product import proviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,5 +40,13 @@ urlpatterns = [
     path('webcasestep_manage/', webviews.webcasestep_manage),
     path('test_report/', views.test_report),
     path('left/', views.left),
+    path('apisearch/', views.apisearch),
+    path('setsearch/', setviews.setsearch),
+    path('product_manage/', proviews.product_manage),
+    path('productsearch/', proviews.productsearch),
+    path('apissearch/', views.apissearch),
+    path('bugsearch/', bugviews.bugsearch),
+    path('appsearch/', appviews.appsearch),
+    path('appstepsearch/', appviews.appstepsearch),
 
 ]

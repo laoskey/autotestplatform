@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from apitest.models import Apitest, Apistep, Apis
 import pymysql
+import re
 from django.contrib.auth import authenticate,login
 
 
@@ -94,3 +95,44 @@ def test_report(request):
 
 def left(request):
     return render(request,"left.html")
+
+# 搜索功能
+@login_required
+def apisearch(request):
+    username = request.session.get('user', '')
+    search_apitestname = request.GET.get("apitestname", "")
+    regx = '^\d+$'
+    if re.search(regx,search_apitestname) != None:
+        apitest_list = Apitest.objects.filter(id=search_apitestname)
+        return render(request, 'apitest_manage.html', {'user':username, 'apitests':apitest_list})
+
+    else:
+        apitest_list = Apitest.objects.filter(apitestname__icontains=search_apitestname,)
+        return render(request, 'apitest_manage.html', {'user':username, 'apitests':apitest_list})
+
+
+# 搜索功能
+@login_required
+def apissearch(request):
+    username = request.session.get('user', '')
+    search_apiname = request.GET.get("apiname", "")
+    regx = '^\d+$'
+    if search_apiname != '':
+        if re.search(regx,search_apiname) != None:
+            apis_list = Apis.objects.filter(id=search_apiname)
+        else:
+            apis_list = Apis.objects.filter(apiname__icontains=search_apiname,)
+        return render(request, 'Apis_manage.html', {"user": username, "apiss": apis_list})
+    else:
+        apis_list = Apis.objects.all()
+        return render(request, 'Apis_manage.html', {"user": username, "apiss": apis_list})
+
+
+    
+
+
+
+
+
+
+

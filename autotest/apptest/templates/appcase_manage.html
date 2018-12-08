@@ -31,8 +31,27 @@
     </div>
 </nav>
 
+
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+        <form class="navbar-form" method="get" action="/appsearch/">
+            {% csrf_token %}
+            <input type="search" name="appcasename" placeholder="请输入id或名称" >
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+
+
+
 <!--测试用例表-->
 <div class="row" style="padding-top: 10px">
+    <div class="row" style="padding-left: 50px">
+
     <div class="col-md-ll">
         <table class="table table-striped">
             <thead>
@@ -61,6 +80,7 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 </body>

@@ -32,14 +32,30 @@
     </div>
 </nav>
 
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+        <form class="navbar-form" method="get" action="/appstepsearch/">
+            {% csrf_token %}
+            <input type="search" name="appcasename" placeholder="请输入id或名称" >
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+
+
 <!--测试用例表-->
 <div class="row" style="padding-top: 70px">
-    <div class="row" style="padding-left: 30px">
+    <div class="row" style="padding-left: 50px">
 
     <div class="col-md-ll">
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>所属产品</th>
                 <th>所属用例</th>
                 <th>步骤</th>
@@ -55,6 +71,7 @@
             <tbody>
             {% for appcasestep in appcasesteps %}
             <tr>
+                <td>{{ appcasestep.id }}</td>
                 <td>{{ appcasestep.Appcase.Product.productname }}</td>
                 <td>case{{ appcasestep.Appcase.id }}:{{ appcasestep.Appcase.appcasename }}</td>
                 <td>{{ appcasestep.appteststep }}:{{ appcasestep.apptestobjname }}</td>

@@ -14,15 +14,30 @@
             <a class="navbar-brand" href="#">&nbsp;</a>
         <ul class="nav justify-content-center">
         </ul>
-        <ul class="nav justify-content-end">
-            <li class="nav-link"><a style="color: white" href="#">{{user}}</a></li>
-            <li class="nav-link"><a style="color: white" href="/logout/">退出</a></li>
+        <ul class="nav justify-content-end ">
+            <li class="nav-link"><a style="color: white" href="../admin/">{{user}}</a></li>
+            <li><a class="nav-link" style="color:white;" href="/logout/">退出</a></li>
         </ul>
     </div>
 </nav>
 
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+        <form class="navbar-form" method="get" action="/bugsearch/">
+            {% csrf_token %}
+            <input type="search" name="bugname" placeholder="请输入Bug的id或名称" >
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+
 <!-- BUG列表-->
 <div class="row" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
     <div class="col-md-ll">
         <table class="table table-striped">
             <thead>
@@ -55,6 +70,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 </body>
 </html>
