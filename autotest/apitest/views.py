@@ -6,6 +6,7 @@ from apitest.models import Apitest, Apistep, Apis
 import pymysql
 import re
 from django.contrib.auth import authenticate,login
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -44,11 +45,19 @@ def logout(request):
 #接口管理
 @login_required
 def apitest_manage(request):
-    apitest_list = Apitest.objects.all()  #读取所有流程接口数据
-    username = request.session.get('user', '') # 读取浏览器登陆session
-    return render(request, "apitest_manage.html", {'user': username,
-                                                 'apitests': apitest_list
-                                                 })#定义接口流程变量，并且返回前端
+    apitest_list = Apitest.objects.all()  # 读取所有流程接口数据
+    username = request.session.get('user', '')  # 读取浏览器登陆session
+    paginator = Paginator(apitest_list, 8)  # 生成paginator对象，每页8条数据
+    page = request.GET.get('page', 1)   # 获取当前的页码数，默认为第1页
+    currentPage = int(page)
+    try:
+        apitest_list = paginator.page(page)
+    except PageNotAnInteger:
+        apitest_list = paginator.page(1) # 如果输入的不是整数，返回page1
+    except EmptyPage:
+        apitest_list = paginator.page(paginator.num_pages) # 如果输入的整数不在系统范围内,则显示最后一页数据
+
+    return render(request, "apitest_manage.html", {'user': username, 'apitests': apitest_list})#定义接口流程变量，并且返回前端
 
 #接口流程步骤管理
 @login_required
