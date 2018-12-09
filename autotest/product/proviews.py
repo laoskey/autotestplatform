@@ -9,7 +9,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def product_manage(request):
     username = request.session.get('user', '')
     product_list = Product.objects.all()
-    paginator = Paginator.page(product_list, 8)
+    product_count = Product.objects.all().count()
+    paginator = Paginator(product_list, 8)
     page = request.GET.get('page', 1)
     currentPage = int(page)
     try:
@@ -18,7 +19,6 @@ def product_manage(request):
         product_list = paginator.page(1) # 如果输入的不是整数，返回page1
     except EmptyPage:
         product_list = paginator.page(paginator.num_pages) # 如果输入的整数不在系统范围内,则显示最后一页数据
-    product_count = Product.objects.all().count()
     return render(request, 'product_manage.html', {'user': username, 'products': product_list,
                                                    'productcounts': product_count})
 
