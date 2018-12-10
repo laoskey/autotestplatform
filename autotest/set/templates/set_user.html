@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<meta charset="UTF-8">
+<meta charuser="UTF-8">
 <head>
     {% load bootstrap4 %}
     {% bootstrap_css %}
@@ -39,6 +39,26 @@
         </ul>
     </div>
 </nav>
+
+
+
+<!--系统设置-->
+<div style="float: right;width: 73%">
+    <select name="user" id="id_User">
+        <option value="" selected>---用户列表---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_User"
+       data-href-template="/admin/user/user/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中用户">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_User"
+       href="/admin/user/user/__fk__/add/?_to_fild=id&amp;_popup=1" title="增加另一个用户">
+        <img src="/static/admin/img/add-changelink.svg" alt="增加"/>
+    </a>
+</div>
+
+
+
 
 
 <div class="row" style="padding-top: 70px">

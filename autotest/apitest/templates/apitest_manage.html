@@ -8,6 +8,23 @@
     <title>自动化测试平台</title>
 </head>
 <body role="document">
+
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src = "/static/admin/js/core.js"></script>
+<script type="text/javascript" src = "/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js/"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<meta name="viewport" content="ueer-scalable=no, width=device-width,initial-scale=1.0,
+ maximum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css"/>
+<meta name="robots" content="NONE,NOARCHIVE"/>
+
 <!--导航栏-->
 <nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
     <div class="container">
@@ -44,6 +61,24 @@
     </form>
 </div>
 </div>
+
+
+
+<!--增加api流程测试用例-->
+<div style="float: right;width: 70%">
+    <select name="Apitest" id="id_Apitest">
+        <option value="" selected>---api流程测试用例---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Apitest"
+    data-href-template="/admin/apitest/apitest/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中的测试用例">
+    <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Apitest"
+       href="/admin/apitest/apis/add/?_to_fild=id&amp;_popup=1" title="增加另一个测试用例">
+    <img src="/static/admin/img/icon-addlink.svg" alt="增加"/>
+    </a>
+</div>
+
 
 
 <!--翻页-->

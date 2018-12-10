@@ -34,6 +34,36 @@
     </div>
 </div>
 
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src = "/static/admin/js/core.js"></script>
+<script type="text/javascript" src = "/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js/"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<meta name="viewport" content="ueer-scalable=no, width=device-width,initial-scale=1.0,
+ maximum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css"/>
+<meta name="robots" content="NONE,NOARCHIVE"/>
+<!--系统设置-->
+<div style="float: right;width: 73%">
+    <select name="Set" id="id_Set">
+        <option value="" selected>---设置名称---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Set"
+       data-href-template="/admin/set/set/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改系统设置">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Set"
+       href="/admin/set/set/add/?_to_fild=id&amp;_popup=1" title="增加另一个系统设置">
+        <img src="/static/admin/img/add-link.svg" alt="增加"/>
+    </a>
+</div>
+
+
 
 
 <!-- 设置列表-->

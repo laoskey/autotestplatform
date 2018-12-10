@@ -64,9 +64,11 @@ def apitest_manage(request):
 def apistep_manage(request):
     username = request.session.get('user', '')
     apistep_list = Apistep.objects.all()
+    apistepcount = apistep_list.count()
     return render(request, "apistep_manage.html", {
         'user':username,
-        'apisteps':apistep_list
+        'apisteps':apistep_list,
+        'apistepcounts':apistepcount
     })
 
 
@@ -74,7 +76,8 @@ def apistep_manage(request):
 def apis_manage(request):
     username = request.session.get('user', '')
     api_list = Apis.objects.all()
-    return render(request, "apis_manage.html", {"user": username, "apiss": api_list})
+    apiscount = Apis.objects.all().count()
+    return render(request, "apis_manage.html", {"user": username, "apiss": api_list, 'apiscounts':apiscount})
 
 
 @login_required

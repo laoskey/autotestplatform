@@ -46,6 +46,47 @@
     </div>
 </div>
 
+<span style="position:absolute; right:100px; bottom:30px;" >
+<div class="container">
+<div style="position: absolute; right: 100px; width: 500px ;">
+    <tr>
+        <th>总数</th>
+        <td>{{apiscounts}}</td>
+    </tr>
+</div>
+</div>
+</span>
+
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+<script type="text/javascript" src="/admin/jsil8n/"></script>
+<script type="text/javascript" src="/static/admin/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src = "/static/admin/js/core.js"></script>
+<script type="text/javascript" src = "/statuc/admin/js/admin/RelatedObjectLookuos.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js/"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp.js"></script>
+<meta name="viewport" content="ueer-scalable=no, width=device-width,initial-scale=1.0,
+ maximum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.com"/>
+<meta name="robots" content="NONE,NOARCHIVE"/>
+
+<!--增加api流程测试用例-->
+<div style="float: right;width: 73%">
+    <select name="Apis" id="id_Apis">
+        <option value="" selected>---增加单一api测试用例---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Apis"
+       data-href-template="/admin/apitest/apis/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中的测试用例">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Apis"
+       href="/admin/apitest/apis/add/?_to_fild=id&amp;_popup=1" title="增加另一个测试用例">
+        <img src="/static/admin/img/icon-addlink.svg" alt="增加"/>
+    </a>
+</div>
+
 
 
 
