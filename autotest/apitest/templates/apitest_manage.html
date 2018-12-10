@@ -2,54 +2,150 @@
 <html lang="zh-CN">
 <meta charset="UTF-8">
 <head>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <title>自动化测试平台</title>
 </head>
 <body role="document">
+
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src = "/static/admin/js/core.js"></script>
+<script type="text/javascript" src = "/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js/"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<meta name="viewport" content="ueer-scalable=no, width=device-width,initial-scale=1.0,
+ maximum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css"/>
+<meta name="robots" content="NONE,NOARCHIVE"/>
+
 <!--导航栏-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">自动化测试平台</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">流程接口测试</a></li>
+            <a class="navbar-brand" href="#">&nbsp;</a>
+            <ul class="nav justify-content-center">
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">{{user}}</a></li>
-                <li><a href="/logout/">退出</a></li>
+
+        <ul class="nav justify-content-center">
+            <li><a style="color: white" href="/apitest_manage/">流程接口测试用例</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/apistep_manage">流程接口测试步骤</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/apis_manage">单一接口测试用例</a></li>
+        </ul>
+
+
+        <ul class="nav justify-content-end ">
+                <li class="nav-link"><a style="color: white" href="../admin/">{{user}}</a></li>
+                <li class="nav-link"><a style="color: white" href="/logout/">退出</a></li>
             </ul>
         </div>
-    </div>
 </nav>
-<!-- 流程测试列表-->
-<div class="row" style="padding-top: 20px">
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+    <form class="navbar-form" method="get" action="/apisearch/">
+        {% csrf_token %}
+        <input type="search" name="apitestname" placeholder="请输入id或名称" >
+        <button type="submit">搜索</button>
+    </form>
+</div>
+</div>
+
+
+
+<!--增加api流程测试用例-->
+<div style="float: right;width: 70%">
+    <select name="Apitest" id="id_Apitest">
+        <option value="" selected>---api流程测试用例---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Apitest"
+    data-href-template="/admin/apitest/apitest/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中的测试用例">
+    <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Apitest"
+       href="/admin/apitest/apis/add/?_to_fild=id&amp;_popup=1" title="增加另一个测试用例">
+    <img src="/static/admin/img/icon-addlink.svg" alt="增加"/>
+    </a>
+</div>
+
+
+
+<!--翻页-->
+<span style="position:absolute; right:100px; bottom:30px;" >
+<div class="container">
+    <ul class="pagination" id="pager">
+        {# 上一页链接开始 #}
+        {% if apitests.has_previous %}
+        {# 如果有上一页，则显示上一页链接 #}
+        <li class="previous">
+            <a href="/apitest_manage/?page={{apitests.previous_page_number }}">上一页</a>
+        </li>
+        {% else %}
+        {% endif %}
+        {# 上一页链接结束 #}
+        {% for num in apitests.paginator.page_range %}
+            {% if num == currentPage %}
+        <li class="item active">
+            <a href="/apitest_manage/?page={{num}}">{{num}}</a>{# 显示当前页数#}
+        </li>
+            {% else %}
+        <li class="item"><a href="/apitest_manage/?page={{num}}">{{num}}</a> </li>
+
+            {% endif %}
+        {% endfor %}
+        {# 下一页链接开始 #}
+        {% if apitests.has_next %}
+            <li class="next"><a href="/apitest_manage/?page={{apitests.next_page_number}}">下一页</a> </li>
+        {% else %}
+            <li class="next_disabled"><a href="#">下一页</a> </li>
+        {% endif %}
+
+    </ul>
+</div>
+</span>
+
+
+<!-- 流程接口列表-->
+<div class="table table-bordered" style="padding-top: 20px" >
+    <div class="row" style="padding-left: 50px">
     <div class="col-md-ll">
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>产品</th>
-                <th>流程接口测试案例名称</th>
-                <th>流程接口描述</th>
-                <th>测试负责人</th>
+                <th>业务接口测试名称</th>
+                <th>执行人</th>
                 <th>测试结果</th>
-                <th>测试案例步骤</th>
+                <th>接口列表</th>
             </tr>
             </thead>
 
             {% for apitest in apitests %}
             <tr>
                 <td>{{ apitest.id}}</td>
-                <td>{{ apitest.Product.productname }}</td>
                 <td>{{ apitest.apitestname }}</td>
-                <td>{{ apitest.apitestdesc }}</td>
                 <td>{{ apitest.apitester }}</td>
-                <td>{{ apitest.apitestresult }}</td>
-                <td>{{ apitest.Apistep.apiteststep }}</td>
+                <td>{% if apitest.apitestresult == 1 %}
+                <a style="color: green">{{ apitest.apitestresult }}</a>
+                {% else %}
+                <a style="color:red">{{ apitest.apitestresult }}</a>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </table>
+    </div>
     </div>
 </div>
 </body>

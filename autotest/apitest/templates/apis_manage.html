@@ -2,28 +2,102 @@
 <html lang="zh-CN">
 <meta charset="UTF-8">
 <head>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <title>自动化测试管理平台</title>
 </head>
 <body role="document">
+
 <!--导航栏-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-sm bg-dark navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">自动化测试管理平台</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">单一接口测试</a></li>
+            <a class="navbar-brand" href="#">&nbsp;</a>
+        <ul class="nav justify-content-center">
+            <li><a class="nav-link" style="color:white;" href="/apitest_manage/">流程接口测试用例</a>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li><a class="nav-link" style="color:white;" href="/apistep_manage/">流程接口测试步骤</a>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li><a class="nav-link" style="color:white;" href="/apis_manage/">单一接口用例</a>
+            </li>
+        </ul>
+
+            <ul class="nav justify-content-end ">
+                <li class="nav-link"><a style="color: white" href="../admin/">{{user}}</a></li>
+                <li><a class="nav-link" style="color:white;" href="/logout/">退出</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">{{user}}</a></li>
-                <li><a href="/logout/">退出</a></li>
-            </ul>
-        </div>
+
     </div>
 </nav>
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+        <form class="navbar-form" method="get" action="/apissearch/">
+            {% csrf_token %}
+            <input type="search" name="apiname" placeholder="请输入id或名称" >
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+<span style="position:absolute; right:100px; bottom:30px;" >
+<div class="container">
+<div style="position: absolute; right: 100px; width: 500px ;">
+    <tr>
+        <th>总数</th>
+        <td>{{apiscounts}}</td>
+    </tr>
+</div>
+</div>
+</span>
+
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+<script type="text/javascript" src="/admin/jsil8n/"></script>
+<script type="text/javascript" src="/static/admin/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src = "/static/admin/js/core.js"></script>
+<script type="text/javascript" src = "/statuc/admin/js/admin/RelatedObjectLookuos.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js/"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp.js"></script>
+<meta name="viewport" content="ueer-scalable=no, width=device-width,initial-scale=1.0,
+ maximum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.com"/>
+<meta name="robots" content="NONE,NOARCHIVE"/>
+
+<!--增加api流程测试用例-->
+<div style="float: right;width: 73%">
+    <select name="Apis" id="id_Apis">
+        <option value="" selected>---增加单一api测试用例---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Apis"
+       data-href-template="/admin/apitest/apis/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中的测试用例">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Apis"
+       href="/admin/apitest/apis/add/?_to_fild=id&amp;_popup=1" title="增加另一个测试用例">
+        <img src="/static/admin/img/icon-addlink.svg" alt="增加"/>
+    </a>
+</div>
+
+
+
+
+
+
+
+
 <!-- 单一测试案例-->
 <div class="row" style="padding-top: 20px">
+    <div class="row" style="padding-left: 50px">
+
     <div class="col-md-ll">
         <table class="table table-striped">
             <thead>
@@ -56,6 +130,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 </body>
 </html>

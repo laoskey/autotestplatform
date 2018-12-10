@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<meta charset="UTF-8">
+<meta charproduct="UTF-8">
 <head>
     {% load bootstrap4 %}
     {% bootstrap_css %}
@@ -26,9 +26,9 @@
 <div class="page-header" style="padding-top: 70px">
     <div class="row" style="padding-left: 50px">
 
-        <form class="navbar-form" method="get" action="/setsearch/">
+        <form class="navbar-form" method="get" action="/productsearch/">
             {% csrf_token %}
-            <input type="search" name="setname" placeholder="请输入id或名称" >
+            <input type="search" name="productname" placeholder="请输入id或名称" >
             <button type="submit">搜索</button>
         </form>
     </div>
@@ -48,20 +48,68 @@
  maximum-scale=1.0"/>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css"/>
 <meta name="robots" content="NONE,NOARCHIVE"/>
-<!--系统设置-->
+<!--增加产品-->
 <div style="float: right;width: 73%">
-    <select name="Set" id="id_Set">
-        <option value="" selected>---设置名称---</option>
+    <select name="Product" id="id_Product">
+        <option value="" selected>---产品---</option>
     </select>
-    <a class="related-widget-wrapper-link change-related" id="change_id_Set"
-       data-href-template="/admin/set/set/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改系统设置">
+    <a class="related-widget-wrapper-link change-related" id="change_id_Product"
+       data-href-template="/admin/product/product/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中的产品">
         <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
     </a>
-    <a class="related-widget-wrapper-link add-related" id="add_id_Set"
-       href="/admin/set/set/add/?_to_fild=id&amp;_popup=1" title="增加另一个系统设置">
-        <img src="/static/admin/img/add-link.svg" alt="增加"/>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Product"
+       href="/admin/product/product/add/?_to_fild=id&amp;_popup=1" title="增加另一产品">
+        <img src="/static/admin/img/icon-addlink.svg" alt="增加"/>
     </a>
 </div>
+
+
+
+
+
+
+<!--翻页-->
+<span style="position:absolute; right:100px; bottom:30px;" >
+<div class="container">
+    <ul class="pagination" id="pager">
+        {# 上一页链接开始 #}
+        {% if products.has_previous %}
+        {# 如果有上一页，则显示上一页链接 #}
+        <li class="previous">
+            <a href="/product_manage/?page={{products.previous_page_number }}">上一页</a>
+        </li>
+        {% else %}
+        {% endif %}
+        {# 上一页链接结束 #}
+        {% for num in products.paginator.page_range %}
+            {% if num == currentPage %}
+        <li class="item active">
+            <a href="/product_manage/?page={{num}}">{{num}}</a>{# 显示当前页数#}
+        </li>
+            {% else %}
+        <li class="item"><a href="/product_manage/?page={{num}}">{{num}}</a> </li>
+
+            {% endif %}
+        {% endfor %}
+        {# 下一页链接开始 #}
+        {% if products.has_next %}
+            <li class="next"><a href="/product_manage/?page={{products.next_page_number}}">下一页</a> </li>
+        {% else %}
+            <li class="next_disabled"><a href="#">下一页</a> </li>
+        {% endif %}
+
+    </ul>
+</div>
+    <div style="position: absolute; right: 100px; width: 500px ;">
+        <tr>
+            <th>总数</th>
+            <td>{{productcounts}}</td>
+        </tr>
+    </div>
+</span>
+
+
+
 
 
 
@@ -74,16 +122,21 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>设置名称</th>
-                    <th>设置的值</th>
+                    <th>产品名称</th>
+                    <th>产品描述</th>
+                    <th>产品负责人</th>
+                    <th>创建时间</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for set in sets %}
+                {% for product in products %}
                 <tr>
-                    <td>{{ set.id}}</td>
-                    <td>{{ set.setname }}</td>
-                    <td>{{ set.setvalue }}</td>
+                    <td>{{ product.id}}</td>
+                    <td>{{ product.productname }}</td>
+                    <td>{{ product.productdesc }}</td>
+                    <td>{{ product.producter }}</td>
+                    <td>{{ product.create_time }}</td>
+
                 </tr>
                 {% endfor %}
                 </tbody>

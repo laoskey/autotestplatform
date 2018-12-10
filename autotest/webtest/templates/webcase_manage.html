@@ -12,14 +12,71 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">&nbsp;</a>
+
+
         <ul class="nav justify-content-center">
+            <li><a style="color: white" href="/webcase_manage/">web测试用例</a> </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="active"><a style="color: white" href="/webcasestep_manage">web测试用例步骤</a></li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </ul>
+
+
         <ul class="nav justify-content-end">
-            <li class="nav-link"><a style="color: white" href="#">{{user}}</a></li>
+            <li class="nav-link"><a style="color: white" href="../admin/">{{user}}</a></li>
             <li class="nav-link"><a style="color: white" href="/logout/">退出</a></li>
         </ul>
     </div>
 </nav>
+
+
+
+<!--搜索栏-->
+<div class="page-header" style="padding-top: 70px">
+    <div class="row" style="padding-left: 50px">
+
+        <form class="navbar-form" method="get" action="/websearch/">
+            {% csrf_token %}
+            <input type="search" name="webcasename" placeholder="请输入id或名称" >
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src = "/static/admin/js/core.js"></script>
+<script type="text/javascript" src = "/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js/"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<meta name="viewport" content="ueer-scalable=no, width=device-width,initial-scale=1.0,
+ maximum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css"/>
+<meta name="robots" content="NONE,NOARCHIVE"/>
+<!--增加api流程测试用例-->
+<div style="float: right;width: 73%">
+    <select name="Webcase" id="id_Webcase">
+        <option value="" selected>---web测试用例---</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Webcase"
+       data-href-template="/admin/webtest/webcase/__fk__/change/?_to_fild=id&amp;_popup=1" title="更改选中的测试用例">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改"/>
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Webcase"
+       href="/admin/webtest/webcase/add/?_to_fild=id&amp;_popup=1" title="增加另一个测试用例">
+        <img src="/static/admin/img/icon-addlink.svg" alt="增加"/>
+    </a>
+</div>
+
+
+
+
 
 <!--测试用例表-->
 <div class="row" style="padding-top: 50px">
